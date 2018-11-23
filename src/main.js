@@ -15,18 +15,24 @@ Vue.use(VueRouter)
 
 // 设置请求的根路径
 Vue.http.options.root = 'http://www.lovegf.cn:8899/';
+//配置传统的表单格式
+Vue.http.options.emulateJSON = true
 
 
 Vue.config.productionTip = false
 
 //按需引入
 //头部，轮播图
-import { Header, Swipe, SwipeItem, Button } from 'mint-ui';
+// import { Header, Swipe, SwipeItem, Button } from 'mint-ui';
 
-Vue.component(Header.name, Header);
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
-Vue.component(Button.name, Button);
+// Vue.component(Header.name, Header);
+// Vue.component(Swipe.name, Swipe);
+// Vue.component(SwipeItem.name, SwipeItem);
+// Vue.component(Button.name, Button);
+//全部引入
+import MintUI from 'mint-ui'
+Vue.use(MintUI)
+import 'mint-ui/lib/style.css'
 
 //导入mui的样式
 import '../lib/mui/css/mui.css'
@@ -44,6 +50,11 @@ Vue.filter('dataFormate', function(dataStr, pattern = 'YYYY-MM-DD HH:mm:ss') {
     return moment(dataStr).format(pattern)
 
 })
+
+
+//做缩略图的插件
+import VuePreview from 'vue2-preview'
+Vue.use(VuePreview)
 
 new Vue({
     el: '#app',
