@@ -10,6 +10,8 @@ import newListConponent from '../pages/newList'
 import newsInfoComponent from '../pages/newsInfo'
 import photoShareComponent from '../pages/photoShare/photoList.vue'
 import photoInfoComponent from '../pages/photoShare/photoInfo.vue'
+import goodsListComponent from '../pages/goodsList'
+import goodsInfoComponent from '../pages/goodsInfo'
 //注册路由
 Vue.use(Router)
 
@@ -24,6 +26,8 @@ export default new Router({
         { path: '/home/newsInfo/:id', component: newsInfoComponent },
         { path: '/home/photoShare', component: photoShareComponent },
         { path: '/home/photoInfo/:id', component: photoInfoComponent },
+        { path: '/home/goodsList/', component: goodsListComponent },
+        { path: '/home/goodsInfo/:id', component: goodsInfoComponent, name: 'goodsInfo' }
     ],
     //替换当前自动生成的类
     linkActiveClass: 'mui-active'
