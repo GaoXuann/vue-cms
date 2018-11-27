@@ -113,7 +113,9 @@ export default {
            const xDist = shopCarPosition.left - ballPosition.left
            const yDist = shopCarPosition.top - ballPosition.top
             el.style.transform=`translate(${xDist}px,${yDist}px)`
-            el.style.transition='all 2s ease'
+
+            el.style.transition='all 0.2s ease'
+
             done()
         },
         afterEnter(el){
