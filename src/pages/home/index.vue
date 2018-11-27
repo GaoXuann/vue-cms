@@ -1,7 +1,7 @@
 <template>
     <div id="homeContent">
         <!-- 轮播图 -->
-        <div class="banner">
+        <!-- <div class="banner">
             <mt-swipe :auto="2000">
             <mt-swipe-item v-for="(value ,i) in bannerList" :key='i'>
                 <a :href="value.url">
@@ -9,8 +9,9 @@
                 </a>
             </mt-swipe-item>
             </mt-swipe>
-        </div>
+        </div> -->
         <!-- 网格导航 -->
+        <swiper :bannerList='bannerList' :isfull="true"></swiper>
         <div class="mui-content">
 		        <ul class="mui-table-view mui-grid-view mui-grid-9">
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
@@ -25,9 +26,12 @@
                             <div class="mui-media-body">图片分享</div>
 		               </router-link>
                     </li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-		                 <img src="../../assets/images/menu3.png" alt="">
-		                <div class="mui-media-body">商品购买</div></a></li>
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+		                <router-link to="/home/goodsList">
+                             <img src="../../assets/images/menu3.png" alt="">
+		                    <div class="mui-media-body">商品购买</div>
+                        </router-link>
+                    </li>
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
                         <img src="../../assets/images/menu4.png" alt="">
 		                <div class="mui-media-body">留言反馈</div></a></li>
@@ -43,6 +47,7 @@
 </template>
 
 <script>
+import swiper from '../../components/swipe.vue'
 import { Toast } from "mint-ui";
     export default {
         data(){
@@ -65,18 +70,21 @@ import { Toast } from "mint-ui";
                     }
                 })
             }
+        },
+        components:{
+            swiper
         }
     }
 </script>
 
 <style lang = 'less'>
     #homeContent {
-        .banner{
+        /* .banner{
             height: 180px;
             img{
                 width: 100%;
             }  
-        }       
+        }        */
        .mui-grid-view {
            margin-top: 0;
             background-color: #fff;

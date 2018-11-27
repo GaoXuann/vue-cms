@@ -10,8 +10,9 @@ Vue.use(VueResource)
 
 //导入路由模块
 import router from './router'
-import VueRouter from 'vue-router'
-Vue.use(VueRouter)
+
+//导入vuex
+import store from './vuex'
 
 // 设置请求的根路径
 Vue.http.options.root = 'http://www.lovegf.cn:8899/';
@@ -48,7 +49,6 @@ import moment from 'moment'
 //pattern = pattern || 'YYYY-MM-DD'用的es6的简写
 Vue.filter('dataFormate', function(dataStr, pattern = 'YYYY-MM-DD HH:mm:ss') {
     return moment(dataStr).format(pattern)
-
 })
 
 
@@ -59,5 +59,6 @@ Vue.use(VuePreview)
 new Vue({
     el: '#app',
     render: c => c(app),
-    router
+    router,
+    store
 })
