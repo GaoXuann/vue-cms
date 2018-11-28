@@ -13,10 +13,7 @@ var store = new Vuex.Store({
             state.car.some(item => {
                 //在car中找到同样的商品
                 if (item.id == goodsinfo.id) {
-
                     item.count += parseInt(goodsinfo.count)
-
-
                     flag = true
                     return true
                 }
@@ -24,9 +21,9 @@ var store = new Vuex.Store({
             if (!flag) {
                 state.car.push(goodsinfo)
             }
+            localStorage.setItem('car', JSON.stringify(state.car))
         }
     },
-
     getters: {
         getAllCount(state) {
             let c = 0
@@ -34,8 +31,14 @@ var store = new Vuex.Store({
                 c += item.count
             })
             return c
+        },
+        getCountList(state) {
+            let obj = {}
+            state.car.forEach(item => {
+                obj[item.id] = item.count
+            })
+            return obj
         }
     }
-
 })
 export default store
