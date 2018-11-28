@@ -11,14 +11,8 @@ Vue.use(VueResource)
 //导入路由模块
 import router from './router'
 
-
 //导入vuex
 import store from './vuex'
-
-
-//导入vuex
-import store from './vuex'
-
 
 // 设置请求的根路径
 Vue.http.options.root = 'http://www.lovegf.cn:8899/';

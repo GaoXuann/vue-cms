@@ -77,7 +77,7 @@ export default {
             this.$http.get('api/goods/getinfo/'+this.id).then(result=>{
                 if(result.body.status==0){
                     this.productNumList = result.body.message[0]
-                    console.log(this.productNumList)
+                    // console.log(this.productNumList)
                 }
             })
         },
@@ -113,9 +113,7 @@ export default {
            const xDist = shopCarPosition.left - ballPosition.left
            const yDist = shopCarPosition.top - ballPosition.top
             el.style.transform=`translate(${xDist}px,${yDist}px)`
-
             el.style.transition='all 0.2s ease'
-
             done()
         },
         afterEnter(el){
