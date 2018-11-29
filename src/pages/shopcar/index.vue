@@ -8,7 +8,7 @@
                         </div>
                         <div class="card-center">
                               <img src="https://img10.360buyimg.com/n7/jfs/t20569/241/521943946/338336/409b289f/5b0fcb56N90ae22f0.jpg" alt="">
-                            <!-- <img :src="item.thumb_path" alt=""> -->
+                             <!-- <img :src="item.thumb_path" alt=""> -->
                         </div>
                         <div class="card-right">
                             <h3>
@@ -18,12 +18,12 @@
                                 <div class="newPrice">
                                     ¥{{item.sell_price}}
                                 </div>
-                                <div class="mui-numbox" data-numbox-min="1" data-numbox-max="9">
-                                    <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-                                    <input id="test" class="mui-input-numbox" type="number" value="5">
-                                    <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
-                                </div>
-                                <div class="href">
+                                   <div class="mui-numbox" data-numbox-min='1' style="height:25px;">
+                                         <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+                                         <input id="test" class="mui-input-numbox" type="number" value="2" @change="getCountChange" ref="numbox"  />
+                                        <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+                                    </div>
+                                 <div class="href">
                                     <a href="javascript:;">删除</a>
                                 </div>
                             </div>
@@ -44,10 +44,13 @@ import mui from '../../../lib/mui/js/mui.js'
         },
         created(){
             this.getCarShop()
+            // console.log('created')
+            // this.getCountChange()
         }, 
          mounted(){
         // 初始化数字选择框组件
             mui(".mui-numbox").numbox();
+            // console.log('mounted')
          },
         methods:{
             getCarShop(){
@@ -70,6 +73,14 @@ import mui from '../../../lib/mui/js/mui.js'
                     }
                 })
           
+            },
+              getCountChange(){
+            //    console.log (this.$refs.numbox[0].value) 
+            //每当改变购物车的值都把最新的数据同步到购物车的store中，覆盖之前的值
+            this.$store.commit('getUpdata',{
+                id:this.carList.id,
+                count:this.$refs.numbox[0].value
+            })
             }
         }
     }
