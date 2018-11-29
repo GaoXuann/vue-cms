@@ -2,9 +2,10 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 
+var car = JSON.parse(localStorage.getItem('car')) || []
 var store = new Vuex.Store({
     state: {
-        car: []
+        car: car
     },
     mutations: {
         addToCar(state, goodsinfo) {
@@ -22,7 +23,19 @@ var store = new Vuex.Store({
                 state.car.push(goodsinfo)
             }
             localStorage.setItem('car', JSON.stringify(state.car))
-        }
+        },
+        //修改购物车商品的数量
+        // getUpdata(state, goodsinfo) {
+        //     state.car.some(item => {
+        //             if (item.id = goodsinfo.id) {
+        //                 item.count = goodsinfo.count
+        //                 return true
+        //             }
+        //         })
+        //         //同步本地数据
+        //     localStorage.setItem('car', JSON.stringify(state.car))
+        // }
+
     },
     getters: {
         getAllCount(state) {
@@ -39,6 +52,7 @@ var store = new Vuex.Store({
             })
             return obj
         }
+
     }
 })
 export default store
